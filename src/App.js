@@ -1,11 +1,13 @@
 import Container from "./components/layout/Container";
-import Navbar from "./components/layout/Navbar";
+import Toolbar from "./components/layout/Toolbar";
+import Todo from "./components/todo/Todo";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Toolbar />
       <Container>
+        <Todo />
       </Container>
     </div>
   );

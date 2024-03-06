@@ -1,0 +1,73 @@
+.task {
+    background-color: #ffffff;
+    width: 700px;
+    border-radius: 30px;
+    padding: 30px 50px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 35px;
+    line-height: 45px;
+}
+
+.first_line, .last_line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.first_line svg {
+    font-size: 30px;
+}
+
+
+.verde {
+    color: rgb(24, 238, 49);
+}
+
+.amarelo {
+    color: rgb(248, 255, 50);
+}
+
+.vermelho {
+    color: rgb(255, 87, 27);
+}
+
+.category {
+    font-size: 22px;
+    line-height: 30px;
+    margin: 8px 0;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 25px;
+    text-align: justify;
+}
+
+.last_line {
+    margin-top: 10px
+}
+
+.last_line p {
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.last_line button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.last_line button svg{
+    font-size: 30px;
+}
+
+.last_line button:hover svg {
+    color: rgb(38,196,165);
+    transform: scale(1.1);
+}
+
