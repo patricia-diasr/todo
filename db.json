@@ -1,0 +1,18 @@
+{
+    "tasks": [{
+        "name": "Nome A",
+        "description": "Descrição A",
+        "category": "Categoria A",
+        "date": "06/03/23"
+    }, {
+        "name": "Nome B",
+        "description": "Descrição B",
+        "category": "Categoria B",
+        "date": "07/03/23"
+    }, {
+        "name": "Nome C",
+        "description": "Descrição C",
+        "category": "Categoria C",
+        "date": "08/03/23"
+    }]
+}
