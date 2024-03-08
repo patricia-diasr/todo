@@ -1,13 +1,16 @@
 import styles from './Toolbar.module.css'
 import { MdOutlineTune, MdAdd } from "react-icons/md";
 
-function Navbar() {
+function Navbar({openAdd}) {
+    const add = () => {
+        openAdd();
+    }
     return (
-        <navbar className={styles.toolbar}>
+        <nav className={styles.toolbar}>
             <button><MdOutlineTune /></button>
             <input type="search" id="pesquisar" name="pesquisar" />
-            <button><MdAdd /></button>
-        </navbar>
+            <button onClick={add}><MdAdd /></button>
+        </nav>
     );
 }
 

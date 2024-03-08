@@ -1,0 +1,29 @@
+.blur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.625);
+}
+
+.modal{
+    background: #fafafa;
+    width: 500px;
+    border-radius: 30px;
+    padding: 20px 0;
+}
+
+.modal h2 {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 40px;
+    margin-top: 25px;
+}
+
+.modal p {
+    font-weight: bolder;
+    font-size: 20px;
+    margin: 40px 30px 10px 40px;
+}

@@ -1,18 +1,34 @@
 {
-    "tasks": [{
-        "name": "Nome A",
-        "description": "Descrição A",
-        "category": "Categoria A",
-        "date": "06/03/23"
-    }, {
-        "name": "Nome B",
-        "description": "Descrição B",
-        "category": "Categoria B",
-        "date": "07/03/23"
-    }, {
-        "name": "Nome C",
-        "description": "Descrição C",
-        "category": "Categoria C",
-        "date": "08/03/23"
-    }]
+  "tasks": [
+    {
+      "id": "3f64",
+      "name": "Task 1",
+      "description": "Lorem ut neque dictum, condimentum mauris in, semper ipsum. Praesent interdum quam quis blandit dictum.",
+      "date": "2024-03-11"
+    },
+    {
+      "id": "15dd",
+      "name": "Task 2",
+      "description": "Maecenas ut neque dictum, condimentum mauris in, semper ipsum. Praesent interdum quam quis blandit dictum.",
+      "date": "2024-03-28"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Faculdade"
+    },
+    {
+      "id": "2",
+      "name": "Trabalho"
+    },
+    {
+      "id": "3",
+      "name": "Pessoal"
+    },
+    {
+      "id": "4",
+      "name": "Outro"
+    }
+  ]
 }

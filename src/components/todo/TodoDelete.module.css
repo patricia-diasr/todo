@@ -1,0 +1,30 @@
+.cancelar, .salvar {
+    padding: 10px 0;
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    width: 190px;
+    display: inline;
+}
+
+.cancelar {
+    margin: 30px 20px 30px 40px;
+    background: #888;
+    border: 2px solid #777;
+}
+
+.cancelar:hover {
+    border: 2px solid #444;
+}
+
+.salvar {
+    margin: 25px 40px 30px 0;
+    background-color: rgba(84,217,159,1);
+    border: 2px solid rgb(84,217,159);
+}
+
+.salvar:hover {
+    border: 2px solid rgb(26, 93, 80);
+}
