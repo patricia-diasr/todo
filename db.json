@@ -1,16 +1,18 @@
 {
   "tasks": [
     {
-      "id": "3f64",
+      "id": "ad65",
       "name": "Task 1",
-      "description": "Lorem ut neque dictum, condimentum mauris in, semper ipsum. Praesent interdum quam quis blandit dictum.",
-      "date": "2024-03-11"
-    },
-    {
-      "id": "15dd",
-      "name": "Task 2",
-      "description": "Maecenas ut neque dictum, condimentum mauris in, semper ipsum. Praesent interdum quam quis blandit dictum.",
-      "date": "2024-03-28"
+      "category": {
+        "id": "2",
+        "name": "Trabalho"
+      },
+      "importance": {
+        "id": "B",
+        "name": "Média"
+      },
+      "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
+      "date": "2024-03-14"
     }
   ],
   "categories": [
@@ -29,6 +31,20 @@
     {
       "id": "4",
       "name": "Outro"
+    }
+  ],
+  "importance": [
+    {
+      "id": "A",
+      "name": "Alta"
+    },
+    {
+      "id": "B",
+      "name": "Média"
+    },
+    {
+      "id": "C",
+      "name": "Baixa"
     }
   ]
 }

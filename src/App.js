@@ -120,6 +120,7 @@ function App() {
               id={task.id}
               name={task.name}
               category={task.category}
+              importance={task.importance.id}
               description={task.description}
               date={task.date}
               key={task.id}
