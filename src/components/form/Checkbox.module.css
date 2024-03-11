@@ -1,0 +1,22 @@
+.checkbox_label {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0 0 40px;
+}
+
+.campo_checkbox {
+    margin: 5px 40px 0 40px;
+    width: 400px;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.campo_checkbox input {
+    margin-right: 10px;
+}
+
+.campo_checkbox label:nth-child(n + 2) {
+    margin-left: 30px;
+}

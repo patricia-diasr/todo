@@ -4,14 +4,16 @@ import Modal from "./components/layout/Modal";
 import Container from "./components/layout/Container";
 import Toolbar from "./components/layout/Toolbar";
 import Todo from "./components/todo/Todo";
+import Filter from './components/filter/Filter';
 import TodoForm from "./components/todo/TodoForm";
 import TodoDelete from "./components/todo/TodoDelete";
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [updateTasks, setUpdateTasks] = useState(false);
-  const [modalEdit, setModalEdit] = useState(undefined);
+  const [modalFilter, setModalFilter] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
+  const [modalEdit, setModalEdit] = useState(undefined);
   const [modalDelete, setModalDelete] = useState(undefined);
 
   useEffect( () => {
@@ -28,6 +30,11 @@ function App() {
     .catch( err => console.log(err) );
   }, [updateTasks]);
 
+  
+  function openFilter() {
+    setModalFilter(true);
+  }
+
   function openAdd() {
     setModalAdd(true);
   }
@@ -40,8 +47,9 @@ function App() {
   }
 
   function closeModal() {
-    setModalEdit(undefined);
+    setModalFilter(false);
     setModalAdd(false);
+    setModalEdit(undefined);
     setModalDelete(undefined);
   }
 
@@ -138,6 +146,12 @@ function App() {
 
   return (
     <div className="App">
+      {modalFilter && 
+        <Modal closeModal={closeModal}>
+          <h2>Filtrar</h2>
+          <Filter />
+        </Modal>
+      }
       {modalAdd && 
         <Modal closeModal={closeModal}>
           <h2>Adicionar</h2>
@@ -152,11 +166,12 @@ function App() {
       }
       {modalDelete && 
         <Modal closeModal={closeModal}>
+          <h2>Deletar</h2>
           <TodoDelete closeModal={closeModal} handleDelete={deleteTask}/>
         </Modal>
       }
       
-      <Toolbar openAdd={openAdd} />
+      <Toolbar openAdd={openAdd} openFilter={openFilter}/>
       <Container>
         { sortTaks().length > 0 &&
           sortTaks().map((task) => (
