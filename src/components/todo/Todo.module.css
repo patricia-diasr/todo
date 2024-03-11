@@ -55,7 +55,7 @@ h2 {
     line-height: 30px;
 }
 
-.last_line button {
+.first_line button, .last_line button {
     background: none;
     border: none;
     cursor: pointer;

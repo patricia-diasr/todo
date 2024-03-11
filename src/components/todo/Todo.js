@@ -1,7 +1,7 @@
 import styles from './Todo.module.css'
-import { MdOutlineBookmarkBorder, MdModeEditOutline, MdDelete } from "react-icons/md";
+import { MdOutlineBookmarkBorder, MdBookmark, MdModeEditOutline, MdDelete } from "react-icons/md";
 
-function Todo({ id, name, category, importance, description, date, openEdit, openDelete}) {
+function Todo({ id, name, category, importance, description, date, completed, openEdit, openDelete, completeTask}) {
     const editTask = () => {
         const task = {
             name: name,
@@ -21,7 +21,9 @@ function Todo({ id, name, category, importance, description, date, openEdit, ope
         <main className={styles.task}>
             <div className={styles.first_line}>
                 <h2>{name}</h2>
-                <MdOutlineBookmarkBorder className={`${styles[importance]}`}/>
+                <button onClick={()=>{completeTask(id, completed)}}>
+                    {completed ? <MdBookmark className={`${styles[importance]}`}/> : <MdOutlineBookmarkBorder className={`${styles[importance]}`}/>}
+                </button>
             </div>
             <p className={styles.category}>{category.name}</p>
             <p className={styles.description}>{description}</p>

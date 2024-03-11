@@ -12,7 +12,38 @@
         "name": "Média"
       },
       "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
-      "date": "2024-03-14"
+      "date": "2024-03-14",
+      "completed": false
+    },
+    {
+      "id": "6eff",
+      "name": "Task",
+      "category": {
+        "id": "4",
+        "name": "Outro"
+      },
+      "importance": {
+        "id": "B",
+        "name": "Média"
+      },
+      "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
+      "completed": false,
+      "date": "2024-03-06"
+    },
+    {
+      "id": "7d70",
+      "name": "Task 3",
+      "category": {
+        "id": "1",
+        "name": "Faculdade"
+      },
+      "importance": {
+        "id": "C",
+        "name": "Baixa"
+      },
+      "completed": true,
+      "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
+      "date": "2024-03-20"
     }
   ],
   "categories": [
