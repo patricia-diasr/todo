@@ -26,7 +26,7 @@ function Todo({ id, name, category, importance, description, date, completed, op
     }
 
     return (
-        <main className={styles.task}>
+        <div className={`${styles.task} ${completed ? styles.completed : ''}`}>
             <div className={styles.first_line}>
                 <h2>{name}</h2>
                 <button onClick={()=>{completeTask(id, completed)}}>
@@ -42,7 +42,7 @@ function Todo({ id, name, category, importance, description, date, completed, op
                     <button onClick={deleteTask}><MdDelete /></button>
                 </div>
             </div>
-        </main>
+        </div>
     );
 }
 
