@@ -16,7 +16,8 @@ function App() {
   const [modalEdit, setModalEdit] = useState(undefined);
   const [modalDelete, setModalDelete] = useState(undefined);
   const [filters, setFilters] = useState({conclusion: {id: "todos"}, checkedValues: ["baixa", "media", "alta"], date: ""});
-  const sortedTasks = useMemo(() => sortTaks(), [tasks, filters]);
+  const [searchbar, setSearchbar] = useState('');
+  const sortedTasks = useMemo(() => sortTaks(), [tasks, filters, searchbar]);
 
   useEffect( () => {
     fetch("http://localhost:5000/tasks", {
@@ -139,8 +140,13 @@ function App() {
   function sortTaks() {
     let tasksSorted = tasks;
     let filterSort = filters;
+    let searchbarSort = searchbar;
     
     return tasksSorted.filter(task => {
+      if (searchbarSort && !task.name.toLowerCase().includes(searchbarSort.toLowerCase())) {
+        return false;
+      }
+  
       if (filterSort.conclusion.id === "concluidos" && !task.completed) {
         return false;
       }
@@ -192,7 +198,7 @@ function App() {
         </Modal>
       }
       
-      <Toolbar openAdd={openAdd} openFilter={openFilter}/>
+      <Toolbar openAdd={openAdd} openFilter={openFilter} setSearchbar={setSearchbar}/>
       <Container>
         { sortedTasks.length > 0 &&
           sortedTasks.map((task) => (
