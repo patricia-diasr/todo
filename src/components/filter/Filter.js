@@ -5,10 +5,8 @@ import Select from '../form/Select';
 import Checkbox from '../form/Checkbox';
 import SubmitButton from '../form/SubmitButton';
 
-function Filter () {
-    const [filter, setFilter] = useState({});
-    const [checkedValues, setCheckedValues] = useState([]);
-
+function Filter ({previousFilter, handleSubmit}) {
+    const [filter, setFilter] = useState(previousFilter || { checkedValues: [] });
 
     const conclusion_options = [
         {
@@ -32,17 +30,20 @@ function Filter () {
     function handleSelect(e, fieldName) {
         setFilter({...filter, [fieldName]: {
             id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text
         }});
     };
 
     const handleCheckboxChange = (value, isChecked) => {
         if (isChecked) {
-            setCheckedValues([...checkedValues, value]);
+            setFilter({...filter, checkedValues: [...filter.checkedValues, value]});
         } else {
-            setCheckedValues(checkedValues.filter(item => item !== value));
+            setFilter({
+                ...filter,
+                checkedValues: filter.checkedValues.filter(item => item !== value)
+            });
         }
     };
+    
 
     function handleChange(e) {
         setFilter({...filter, [e.target.name]: e.target.value});
@@ -51,7 +52,7 @@ function Filter () {
 
     const submit = (e) => {
         e.preventDefault();
-        // handleSubmit(filter)
+        handleSubmit(filter);
     };
 
     return (
@@ -69,7 +70,7 @@ function Filter () {
                 labelText="Importância"
                 options={importance_options}
                 handleOnChange={handleCheckboxChange}
-                checkedValues={checkedValues}
+                checkedValues={filter.checkedValues}
             />
             <Input 
                 type="date"

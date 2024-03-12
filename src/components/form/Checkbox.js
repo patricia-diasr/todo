@@ -1,7 +1,6 @@
 import styles from './Checkbox.module.css';
 
 function Checkbox ({text, name, options, handleOnChange, checkedValues}) {
-
     const handleChange = (event) => {
         const value = event.target.value;
         const isChecked = event.target.checked;
@@ -19,7 +18,7 @@ function Checkbox ({text, name, options, handleOnChange, checkedValues}) {
                             name={name}
                             id={option.value}
                             value={option.value}
-                            checked={checkedValues.includes(option.value)}
+                            checked={(checkedValues || []).includes(option.value)}
                             onChange={handleChange}
                         />
                         {option.label}

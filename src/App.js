@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import Modal from "./components/layout/Modal";
 import Container from "./components/layout/Container";
@@ -15,6 +15,8 @@ function App() {
   const [modalAdd, setModalAdd] = useState(false);
   const [modalEdit, setModalEdit] = useState(undefined);
   const [modalDelete, setModalDelete] = useState(undefined);
+  const [filters, setFilters] = useState({conclusion: {id: "todos"}, checkedValues: ["baixa", "media", "alta"], date: ""});
+  const sortedTasks = useMemo(() => sortTaks(), [tasks, filters]);
 
   useEffect( () => {
     fetch("http://localhost:5000/tasks", {
@@ -128,20 +130,39 @@ function App() {
     })
   }
 
+  function changeFilters(filters) {
+    setFilters(filters);
+    setModalFilter(false);
+    setUpdateTasks(!updateTasks);
+  }
+
   function sortTaks() {
     let tasksSorted = tasks;
-    tasksSorted.sort((a, b) => {
-      if (a.completed !== b.completed) {
-        return a.completed ? 1 : -1;
+    let filterSort = filters;
+    
+    return tasksSorted.filter(task => {
+      if (filterSort.conclusion.id === "concluidos" && !task.completed) {
+        return false;
       }
-      if (a.completed) {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA - dateB;
+      if (filterSort.conclusion.id === "nao-concluidos" && task.completed) {
+        return false;
       }
-      return 0;
+      if (!filterSort.checkedValues.includes(task.importance.id)) {
+        return false;
+      }
+      if (filterSort.date && task.date !== filterSort.date) {
+        return false;
+      }
+      return true;
+    }).sort((a, b) => {
+        if (filterSort.conclusion.id === "todos") {
+          if (a.completed === b.completed) {
+            return new Date(a.date) - new Date(b.date);
+          }
+          return a.completed ? 1 : -1;
+        }
+        return new Date(a.date) - new Date(b.date);
     });
-    return tasksSorted;
   }
 
   return (
@@ -149,7 +170,7 @@ function App() {
       {modalFilter && 
         <Modal closeModal={closeModal}>
           <h2>Filtrar</h2>
-          <Filter />
+          <Filter previousFilter={filters} handleSubmit={changeFilters}/>
         </Modal>
       }
       {modalAdd && 
@@ -173,8 +194,8 @@ function App() {
       
       <Toolbar openAdd={openAdd} openFilter={openFilter}/>
       <Container>
-        { sortTaks().length > 0 &&
-          sortTaks().map((task) => (
+        { sortedTasks.length > 0 &&
+          sortedTasks.map((task) => (
             <Todo 
               id={task.id}
               name={task.name}

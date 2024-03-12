@@ -8,12 +8,12 @@
         "name": "Trabalho"
       },
       "importance": {
-        "id": "B",
+        "id": "media",
         "name": "Média"
       },
-      "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
+      "description": "Quisque ornare felis sed liro fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
       "date": "2024-03-14",
-      "completed": false
+      "completed": true
     },
     {
       "id": "6eff",
@@ -23,7 +23,7 @@
         "name": "Outro"
       },
       "importance": {
-        "id": "B",
+        "id": "media",
         "name": "Média"
       },
       "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
@@ -38,10 +38,10 @@
         "name": "Faculdade"
       },
       "importance": {
-        "id": "C",
+        "id": "baixa",
         "name": "Baixa"
       },
-      "completed": true,
+      "completed": false,
       "description": "Quisque ornare felis sed libero fermentum hendrerit. Suspendisse viverra, odio at accumsan fermentum, sem lacus rutrum tellus, at posuere nisl leo vel dui. Ut maximus iaculis ipsum nec lacinia. Pellentesque est libero, dictum in blandit gravida, venenatis a justo.",
       "date": "2024-03-20"
     }
@@ -66,7 +66,7 @@
   ],
   "importance": [
     {
-      "id": "A",
+      "id": "alta",
       "name": "Alta"
     },
     {
