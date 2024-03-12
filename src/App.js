@@ -1,38 +1,41 @@
 import { useState, useEffect, useMemo } from 'react';
 
-import Modal from "./components/layout/Modal";
-import Container from "./components/layout/Container";
-import Toolbar from "./components/layout/Toolbar";
-import Todo from "./components/todo/Todo";
+import Modal from './components/layout/Modal';
+import Container from './components/layout/Container';
+
+import Toolbar from './components/layout/Toolbar';
+import Todo from './components/todo/Todo';
+
 import Filter from './components/filter/Filter';
-import TodoForm from "./components/todo/TodoForm";
-import TodoDelete from "./components/todo/TodoDelete";
+import TodoForm from './components/todo/TodoForm';
+import TodoDelete from './components/todo/TodoDelete';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [updateTasks, setUpdateTasks] = useState(false);
+
   const [modalFilter, setModalFilter] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   const [modalEdit, setModalEdit] = useState(undefined);
   const [modalDelete, setModalDelete] = useState(undefined);
-  const [filters, setFilters] = useState({conclusion: {id: "todos"}, checkedValues: ["baixa", "media", "alta"], date: ""});
+
+  const [filters, setFilters] = useState({conclusion: {id: 'todos'}, checkedValues: ['baixa', 'media', 'alta'], date: ''});
   const [searchbar, setSearchbar] = useState('');
   const sortedTasks = useMemo(() => sortTaks(), [tasks, filters, searchbar]);
 
   useEffect( () => {
-    fetch("http://localhost:5000/tasks", {
-        method: "GET",
-        headers: {
-            "Content-type": "application/json"
-        }
+    fetch('https://todo-list-b1551-default-rtdb.firebaseio.com/tasks.json', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json'
+      }
     })
     .then( resp => resp.json() )
     .then ( data => {
-        setTasks(data);
+      setTasks(data);
     } )
     .catch( err => console.log(err) );
   }, [updateTasks]);
-
   
   function openFilter() {
     setModalFilter(true);
@@ -57,20 +60,20 @@ function App() {
   }
 
   function addTask(task) {
-    task.name ??= "Sem nome";
+    task.name ??= 'Sem nome';
     task.category ??= {
-      "id": "4",
-      "name": "Outro"
+      'id': '4',
+      'name': 'Outro'
     };
     task.importance ??= {
-      "id": "C",
-      "name": "Baixa"
+      'id': 'baixa',
+      'name': 'Baixa'
     }
     task.completed = false;
-    fetch("http://localhost:5000/tasks", {
-      method: "POST",
+    fetch('https://todo-list-b1551-default-rtdb.firebaseio.com/tasks.json', {
+      method: 'POST',
       headers: {
-          "Content-type": "application/json"
+        'Content-type': 'application/json'
       },
       body: JSON.stringify(task)
     })
@@ -78,12 +81,12 @@ function App() {
     .then ( data => {
       setModalAdd(false);
       setUpdateTasks(!updateTasks);
-    } )
+    })
     .catch( err => console.log(err) );
   }
 
   function editTask(task) {
-    fetch(`http://localhost:5000/tasks/${task.id}`, {
+    fetch(`https://todo-list-b1551-default-rtdb.firebaseio.com/tasks/${task.id}.json`, {
       method: 'PATCH',
       headers: {
           'Content-Type': 'application/json',
@@ -99,28 +102,28 @@ function App() {
 
   function deleteTask() {
     const task = modalDelete;
-    fetch(`http://localhost:5000/tasks/${task}`, {
-      method: "DELETE",
+    fetch(`https://todo-list-b1551-default-rtdb.firebaseio.com/tasks/${task}.json`, {
+      method: 'DELETE',
       headers: {
-          "Content-type": "application/json"
+        'Content-type': 'application/json'
       }
     })
     .then( resp => resp.json() )
     .then ( data => {
       setModalDelete(undefined);
       setUpdateTasks(!updateTasks);
-    } )
+    })
     .catch( err => console.log(err) );
   }
 
   function completeTask(id, completed) {
     let update = {
-      "completed": !completed
+      'completed': !completed
     }
-    fetch(`http://localhost:5000/tasks/${id}`, {
+    fetch(`https://todo-list-b1551-default-rtdb.firebaseio.com/tasks/${id}.json`, {
       method: 'PATCH',
       headers: {
-          'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(update),
     })
@@ -138,41 +141,49 @@ function App() {
   }
 
   function sortTaks() {
-    let tasksSorted = tasks;
-    let filterSort = filters;
-    let searchbarSort = searchbar;
+    if (tasks === null) {
+      return []
+    }
+    const tasksSorted = Object.entries(tasks).map(([key, value]) => ({ id: key, ...value }));
+    const filterSort = filters;
+    const searchbarSort = searchbar;
     
     return tasksSorted.filter(task => {
       if (searchbarSort && !task.name.toLowerCase().includes(searchbarSort.toLowerCase())) {
         return false;
       }
   
-      if (filterSort.conclusion.id === "concluidos" && !task.completed) {
+      if (filterSort.conclusion.id === 'concluidos' && !task.completed) {
         return false;
       }
-      if (filterSort.conclusion.id === "nao-concluidos" && task.completed) {
+
+      if (filterSort.conclusion.id === 'nao-concluidos' && task.completed) {
         return false;
       }
+
       if (!filterSort.checkedValues.includes(task.importance.id)) {
         return false;
       }
+
       if (filterSort.date && task.date !== filterSort.date) {
         return false;
       }
+
       return true;
     }).sort((a, b) => {
-        if (filterSort.conclusion.id === "todos") {
-          if (a.completed === b.completed) {
-            return new Date(a.date) - new Date(b.date);
-          }
-          return a.completed ? 1 : -1;
+      if (filterSort.conclusion.id === 'todos') {
+        if (a.completed === b.completed) {
+          return new Date(a.date) - new Date(b.date);
         }
-        return new Date(a.date) - new Date(b.date);
+        return a.completed ? 1 : -1;
+      }
+      
+      return new Date(a.date) - new Date(b.date);
     });
   }
 
   return (
-    <div className="App">
+    <div className='App'>
       {modalFilter && 
         <Modal closeModal={closeModal}>
           <h2>Filtrar</h2>

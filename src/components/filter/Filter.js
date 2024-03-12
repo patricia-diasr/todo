@@ -10,14 +10,14 @@ function Filter ({previousFilter, handleSubmit}) {
 
     const conclusion_options = [
         {
-            id: "todos",
-            name: "Todos"
+            id: 'todos',
+            name: 'Todos'
         }, {
-            id: "concluidos",
-            name: "Apenas Concluídos"
+            id: 'concluidos',
+            name: 'Apenas Concluídos'
         }, {
-            id: "nao-concluidos",
-            name: "Apenas não Concluídos"
+            id: 'nao-concluidos',
+            name: 'Apenas não Concluídos'
         }
     ];
 
@@ -58,28 +58,28 @@ function Filter ({previousFilter, handleSubmit}) {
     return (
         <form onSubmit={submit}>
             <Select 
-                text="Conclusão"
-                name="conclusion_id"
+                text='Conclusão'
+                name='conclusion_id'
                 options={conclusion_options}
                 value={filter.conclusion ? filter.conclusion.id : ''}
                 handleOnChange={(e) => handleSelect(e, 'conclusion')}
             />
             <Checkbox
-                text="Importância"
-                name="opcao-importancia"
-                labelText="Importância"
+                text='Importância'
+                name='opcao-importancia'
+                labelText='Importância'
                 options={importance_options}
                 handleOnChange={handleCheckboxChange}
                 checkedValues={filter.checkedValues}
             />
             <Input 
-                type="date"
-                text="Data"
-                name="date"
+                type='date'
+                text='Data'
+                name='date'
                 value={filter.date || ''}
                 handleOnChange={handleChange}
             />
-            <SubmitButton text="SALVAR" />
+            <SubmitButton text='SALVAR' />
         </form>
     );
 }

@@ -14,7 +14,7 @@ function Checkbox ({text, name, options, handleOnChange, checkedValues}) {
                 {options.map((option) => (
                     <label key={option.value} className={styles.campo_checkbox}>
                         <input
-                            type="checkbox"
+                            type='checkbox'
                             name={name}
                             id={option.value}
                             value={option.value}

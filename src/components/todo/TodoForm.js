@@ -12,10 +12,10 @@ function TaskForm ({handleSubmit, taskData}) {
     const [importance, setImportance] = useState([]);
 
     useEffect( () => {
-        fetch("http://localhost:5000/categories", {
-            method: "GET",
+        fetch('https://todo-list-b1551-default-rtdb.firebaseio.com/categories.json', {
+            method: 'GET',
             headers: {
-                "Content-type": "application/json"
+                'Content-type': 'application/json'
             }
         })
         .then( resp => resp.json() )
@@ -24,10 +24,10 @@ function TaskForm ({handleSubmit, taskData}) {
     }, []);
 
     useEffect( () => {
-        fetch("http://localhost:5000/importance", {
-            method: "GET",
+        fetch('https://todo-list-b1551-default-rtdb.firebaseio.com/importance.json', {
+            method: 'GET',
             headers: {
-                "Content-type": "application/json"
+                'Content-type': 'application/json'
             }
         })
         .then( resp => resp.json() )
@@ -54,41 +54,41 @@ function TaskForm ({handleSubmit, taskData}) {
     return (
         <form onSubmit={submit}>
             <Input 
-                type="text"
-                text="Nome"
-                name="name"
+                type='text'
+                text='Nome'
+                name='name'
                 value={task.name || ''}
                 handleOnChange={handleChange}
             />
             <Select 
-                text="Categoria"
-                name="category_id"
+                text='Categoria'
+                name='category_id'
                 options={categories}
                 value={task.category ? task.category.id : ''}
                 handleOnChange={(e) => handleSelect(e, 'category')}
             />
             <Select 
-                text="Importância"
-                name="importance_id"
+                text='Importância'
+                name='importance_id'
                 options={importance}
                 value={task.importance ? task.importance.id : ''}
                 handleOnChange={(e) => handleSelect(e, 'importance')}
             />
             <Input 
-                type="text"
-                text="Descrição"
-                name="description"
+                type='text'
+                text='Descrição'
+                name='description'
                 value={task.description || ''}
                 handleOnChange={handleChange}
             />
             <Input 
-                type="date"
-                text="Data"
-                name="date"
+                type='date'
+                text='Data'
+                name='date'
                 value={task.date || ''}
                 handleOnChange={handleChange}
             />
-            <SubmitButton text="SALVAR" />
+            <SubmitButton text='SALVAR' />
         </form>
     );
 }
