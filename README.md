@@ -6,11 +6,6 @@ Projeto desenvolvido para fixar conhecimento de React.js
 
 [Veja funcionando](https://patricia-diasr.github.io/todo/)
 
-## Carregar Projetos
+## Carregar Projeto
 
-Para carregar o pr
-<<<<<<< HEAD
-ojeto, use a linha de comando `npm start`
-=======
-ojeto, use a linha de comando `npm start`
->>>>>>> 3c9ef890a204f642dbc7b733aaae95c466df4d20
+Para carregar o projeto, use a linha de comando `npm start`
